@@ -1,0 +1,19 @@
+{
+    "$size": 16,
+    "$type": "MPA",
+    "$table": "MapPotalArea",
+    "$structure": {
+        "uk1": {
+            "type": "uint"
+        },
+        "uk2": {
+            "type": "uint"
+        },
+        "uk3": {
+            "type": "uint"
+        },
+        "uk4": {
+            "type": "uint"
+        }
+    }
+}

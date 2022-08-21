@@ -1,0 +1,423 @@
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.25);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 255, 255, 0.5);
+}
+
+html,
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: rgb(33 41 48);
+    overflow: hidden;
+    height: 100vh;
+    color: rgba(255, 255, 255, 0.5);
+    user-select: none;
+}
+
+button {
+    color: inherit
+}
+
+.main-content {
+    height: calc(100% - 35px);
+    overflow: auto;
+    position: fixed;
+    width: 100%;
+    top: 35px;
+}
+
+.titlebar {
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 35px;
+    border-bottom: 1px solid #000000;
+    -webkit-app-region: drag;
+    position: fixed;
+    width: 100%;
+    line-height: 1;
+}
+
+.titlebar .window-actions {
+    float: right;
+    display: inline-flex;
+    padding-right: 5px;
+    -webkit-app-region: no-drag;
+    z-index: 2;
+    width: 45px;
+}
+
+.titlebar #close {
+    background: rgb(196, 39, 60);
+}
+
+.titlebar #max {
+    background: rgb(86, 229, 96);
+}
+
+.titlebar #min {
+    background: rgb(229, 196, 86);
+}
+
+.titlebar .mbtn {
+    background: white;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    font-size: 14px;
+    margin: 10px 0px 0 5px;
+    overflow: hidden;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.titlebar #title {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    width: calc(100% - 60px);
+    line-height: 35px;
+    position: absolute;
+    z-index: 0;
+}
+
+.titlebar .mbtn:hover {
+    filter: brightness(120%);
+}
+
+.titlebar .disabled {
+    opacity: 0.1;
+    cursor: not-allowed
+}
+
+.tool {
+    width: 300px;
+    height: 64px;
+    background-color: rgb(200, 200, 200);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: auto;
+    transform: translateY(50%);
+    transition: all 0.15s ease-in;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 2px 13px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.tool:hover {
+    color: rgb(117, 147, 216);
+    border: 1px solid rgb(117, 147, 216);
+}
+
+.tool .icon {
+    width: 64px;
+    height: 64px;
+}
+
+.tool .content {
+    position: absolute;
+    top: 10px;
+    left: 74px;
+}
+
+.tool .title {
+    width: auto;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 70ms ease;
+}
+
+.back {
+    border: 1px solid transparent;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.back:hover {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.files {
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100px;
+    margin: auto;
+    border-radius: 5px;
+    position:  relative;
+    transform: translateY(100%);
+    cursor: pointer;
+    border: 4px dashed transparent;
+    z-index: 0;
+}
+
+.files:hover,
+.files.over {
+    border-color: black;
+}
+
+.files .text {
+    position: absolute;
+    top: 40px;
+    left: 22%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+td,
+th {
+    margin: 0;
+}
+
+
+.tbl {
+    width: 80%;
+    margin: auto;
+    background-color: white;
+    padding: 5px;
+    left: 10%;
+    top: 55%;
+    box-shadow: 2px 13px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.5);
+    position:  absolute;
+}
+
+table.dtbl {
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    background-color: white;
+    left: 10%;
+    top: 55%;
+    border-radius: 5px;
+    box-shadow: 2px 13px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.5);
+
+}
+
+.dataTables_wrapper {
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+}
+
+.tbl th {
+    text-align: left;
+    width: 10px;
+    padding: 5px;
+    font-size: 0.85em;
+    user-select: none;
+}
+
+.tbl td {
+    width: 10px;
+    text-align: left;
+    padding: 5px;
+}
+
+.tbl tr {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.tbl tr.selected {
+    background: rgba(117, 147, 216, 0.25);
+}
+
+.code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.6em;
+    color: red;
+    width: 300px;
+}
+
+.tbl td.code {
+    cursor: pointer;
+}
+
+.btn {
+    background: linear-gradient(rgb(255, 255, 255), rgb(144, 144, 144));
+    padding: 6px;
+    border-radius: 3px;
+    margin: 0 5px 5px 0;
+    cursor: pointer;
+    border: none;
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px rgba(255, 255, 255, 1);
+}
+
+.btn:hover,
+.btn:focus {
+    filter: brightness(120%);
+}
+
+.btn:active {
+    background: linear-gradient(rgb(144, 144, 144), rgb(255, 255, 255));
+    text-shadow: -1px -1px rgba(255, 255, 255, 1);
+}
+
+.btn.primary {
+    background: linear-gradient(rgb(117, 147, 216), rgb(58, 82, 137));
+    border: none;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.btn.primary:active {
+    background: linear-gradient(rgb(58, 82, 137), rgb(117, 147, 216));
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.25);
+}
+
+.btn.danger {
+    background: linear-gradient(rgb(201, 65, 65), rgb(111, 27, 27));
+    border: none;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.btn.danger:active {
+    background: linear-gradient(rgb(111, 27, 27), rgb(201, 65, 65));
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.25);
+}
+
+.btn.info {
+    background: linear-gradient(rgb(65, 201, 165), rgb(42, 134, 109));
+    border: none;
+    color: rgb(217, 255, 246);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.btn.info:active {
+    background: linear-gradient(rgb(42, 134, 109), rgb(65, 201, 165));
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.25);
+}
+
+.btn.secondary {
+    background: linear-gradient(rgb(103, 79, 190), rgb(45, 31, 94));
+    border: none;
+    color: rgb(242, 217, 255);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.btn.secondary:active {
+    background: linear-gradient(rgb(45, 31, 94), rgb(103, 79, 190));
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.25);
+}
+
+.btn.warn {
+    background: linear-gradient(rgb(201, 160, 65), rgb(122, 92, 22));
+    border: none;
+    color: rgb(255, 249, 217);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.btn.warn:active {
+    background: linear-gradient(rgb(122, 92, 22), rgb(201, 160, 65));
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.25);
+}
+
+
+#preview-image {
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+}
+
+.tools-bar {
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 48%;
+}
+
+#progress-bar {
+    width: 400px;
+    background: rgb(64 165 158 / 38%);
+    left: calc(50% - 200px);
+    padding: 5px 5px 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    height: 20px;
+    position: absolute;
+    overflow: hidden
+}
+
+.hidden {
+    display: none;
+}
+
+#progress-bar .percentage {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+#progress-bar .placeholder {
+    background: #40a59e;
+    width: 200px;
+    padding: 5px 5px 2px 5px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 20px;
+    z-index: 0;
+}
+
+#progress-bar .placeholder .anim {
+    width: 2px;
+    height: 30px;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0));
+    position: absolute;
+    animation: pb-anim 2s infinite;
+}
+
+@keyframes pb-anim {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 99%;
+    }
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+}
+
+.structure-type {
+    text-align: left;
+    color: rgb(117, 147, 216);
+    cursor: pointer;
+}
+
+.structure-type:hover {
+    border-bottom: 1px dashed black;
+}

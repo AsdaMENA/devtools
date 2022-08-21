@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Asda Texture Tools</title>
+    <link href="./css/main.css" rel="stylesheet" />
+    <script defer src="./js/preload.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script defer src="./js/jquery.js"></script>
+    <script defer src="./js/titlebar.js"></script>
+    <script defer src="./js/main.js"></script>
+
+    <script defer src="./js/tools/textures/index.js"></script>
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</head>
+
+<body style="background-image: url(./img/npc/amy.png); background-position: 0 87px;">
+    <header class="titlebar">
+        <div class="window-actions">
+            <div id="min" class="mbtn">-</div>
+            <div id="close" class="mbtn">×</div>
+        </div>
+
+        <div id="title"></div>
+    </header>
+
+    <div class="main-content">
+        <button type="button" class="back" id="back-button">Back to tools</button>
+
+        <div id="progress-bar" class="hidden">
+            <div class="placeholder">
+                <div class="anim"></div>
+            </div>
+            <div class="percentage">100%</div>
+        </div>
+
+        <div class="files" id="file-handler">
+            <span class="text">Drag and drop or browse files.</span>
+        </div>
+
+        <div class="tools-bar">
+            <button class="btn primary" onclick="exportAll();">Export all</button>
+            <button class="btn secondary" onclick="convertAll();">Convert all</button>
+            <button class="btn info" onclick="clearTextures();">Clear all</button>
+
+            <div style="float:right;display: none;" id="select_buttons">
+                <button class="btn primary" id="es_btn" onclick="exportSelected();">Export selected</button>
+                <button class="btn secondary" id="cs_btn" onclick="convertSelected();">Convert selected</button>
+                <button class="btn danger" id="cl_btn" onclick="clearSelected();">Clear selected</button>
+            </div>
+        </div>
+
+        <table id="textures" class="tbl">
+            <thead>
+                <tr>
+                    <th><span id="selected">No selected rows.</span></th>
+                </tr>
+                <tr>
+                    <th style="width: 100px"></th>
+                    <th>File Path</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+
+</html>

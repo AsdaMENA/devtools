@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Asda Code Editor</title>
+    <link href="./css/main.css" rel="stylesheet" />
+    <script defer src="./js/preload.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script defer src="./js/jquery.js"></script>
+    <script defer src="./js/titlebar.js"></script>
+    <script defer src="./js/main.js"></script>
+    <script defer src="./js/editor.js"></script>
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</head>
+
+<body>
+    <header class="titlebar">
+        <div class="window-actions">
+            <div id="min" class="mbtn">-</div>
+            <div id="close" class="mbtn">×</div>
+        </div>
+
+        <div id="title"></div>
+    </header>
+    <div class="main-content">
+        <div id="editor"></div>
+    </div>
+
+    <script>
+        (function () {
+            const path = require('path');
+            const amdLoader = require('../node_modules/monaco-editor/min/vs/loader.js');
+            const amdRequire = amdLoader.require;
+            const amdDefine = amdLoader.require.define;
+            console.log(amdLoader, amdRequire)
+            function uriFromPath(_path) {
+                var pathName = path.resolve(_path).replace(/\\/g, '/');
+                if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+                    pathName = '/' + pathName;
+                }
+                return encodeURI('file://' + pathName);
+            }
+
+            amdRequire.config({
+                baseUrl: uriFromPath(path.join(__dirname, '../node_modules/monaco-editor/min'))
+            });
+
+            self.module = undefined;
+
+            amdRequire(['vs/editor/editor.main'], function () {
+
+
+                monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+                    validate: true,
+                    schemas: [
+                        {
+                            uri: 'https://json.legendofsecrets.net/structure-schema.json',
+                            fileMatch: ['*'],
+                            schema: {
+                                $schema: "http://json-schema.org/draft-04/schema#",
+                                type: 'object',
+                                properties: {
+                                    $size: {
+                                        type: 'integer',
+                                        required: false,
+                                    },
+                                    $type: {
+                                        type: 'string',
+                                        required: true,
+                                    },
+                                    $table: {
+                                        type: 'string',
+                                        required: true
+                                    },
+                                    $structure: {
+                                        type: 'object',
+                                        required: true,
+                                        patternProperties: {
+                                            "\w*": {
+                                                description: 'Property',
+                                                type: "object",
+                                                properties: {
+                                                    type: {
+                                                        enum: ['array', 'int', 'uint', 'short', 'ushort', 'byte', 'ubyte', 'string', 'float', 'buffer', 'boolean'],
+                                                        description: 'Value type of property.',
+                                                        required: true,
+                                                    },
+                                                    length: {
+                                                        type: 'integer',
+                                                        description: 'Length of string/buffer, `type` property must be set to "string" or "buffer".'
+                                                    },
+                                                    description: {
+                                                        type: 'string',
+                                                        description: 'Description of the given property.'
+                                                    },
+                                                    $ignore: {
+                                                        type: 'boolean',
+                                                        description: 'If should ignore the value of this property or not (ignore in sql)'
+                                                    },
+                                                    $constraints: {
+                                                        type: 'object',
+                                                        description: 'Constraints for sql exporter',
+                                                        properties: {
+                                                            primaryKey: {
+                                                                type: 'boolean',
+                                                                default: false,
+                                                                description: 'Wether the following property is primary key or not, used in sql exporter.'
+                                                            },
+                                                            unique: {
+                                                                type: 'boolean',
+                                                                default: false,
+                                                                description: 'Wether the following property is unique or not, used in sql exporter.'
+                                                            },
+                                                        }
+                                                    },
+                                                    element: {
+                                                        type: 'object',
+                                                        description: 'Describe options of each element of array type.',
+                                                        properties: {
+                                                            type: {
+                                                                enum: ['int', 'uint', 'short', 'ushort', 'byte', 'ubyte', 'string', 'float', 'buffer', 'boolean'],
+                                                                description: 'Value type of property.',
+                                                                required: true,
+                                                            },
+                                                            length: {
+                                                                type: 'integer',
+                                                                description: 'Length of string/buffer, `type` property must be set to "string" or "buffer".'
+                                                            },
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                });
+
+                const editor = window.editor = monaco.editor.create(document.getElementById('editor'), {
+                    value: JSON.stringify({}, null, 4),
+                    language: 'json',
+                    theme: 'vs-dark',
+                    minimap: { enabled: false }
+                });
+
+                editor.getModel().updateOptions({ tabSize: 4 });
+
+                load(editor);
+            });
+        })();
+    </script>
+</body>
+
+</html>

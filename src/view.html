@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Asda Table View</title>
+    <link href="./css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./datatables/datatables.min.css" />
+
+    <script defer src="./js/preload.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script defer src="./js/jquery.js"></script>
+    <script defer src="./datatables/datatables.min.js"></script>
+    
+    <script defer src="./js/titlebar.js"></script>
+    <script defer src="./js/main.js"></script>
+
+    <script defer src="./js/view.js"></script>
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</head>
+
+<body class="dark">
+    <header class="titlebar">
+        <div class="window-actions">
+            <div id="min" class="mbtn">-</div>
+            <div id="close" class="mbtn">×</div>
+        </div>
+
+        <div id="title"></div>
+    </header>
+
+    <div class="main-content">
+        <div class="tbl" style="top:0.8%;width: 98%;padding:0;left:0.8%">
+            <table id="view"></table>
+        </div>
+    </div>
+</body>
+
+</html>

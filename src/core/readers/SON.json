@@ -1,0 +1,14 @@
+{
+    "$size": 68,
+    "$type": "SON",
+    "$table": "SetItemName",
+    "$structure": {
+        "id": {
+            "type": "uint"
+        },
+        "name": {
+            "type": "string",
+            "length": 64
+        }
+    }
+}

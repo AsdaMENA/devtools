@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Asda Development Tools</title>
+    <link href="./css/main.css" rel="stylesheet" />
+    <script defer src="./js/preload.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script defer src="./js/jquery.js"></script>
+    <script defer src="./js/titlebar.js"></script>
+    <script defer src="./js/main.js"></script>
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</head>
+
+<body>
+    <header class="titlebar">
+        <div class="window-actions">
+            <div id="min" class="mbtn">-</div>
+            <div id="close" class="mbtn">×</div>
+        </div>
+
+        <div id="title"></div>
+    </header>
+    <div class="main-content">
+        <table align="center" id="tools">
+        </table>
+    </div>
+    <script>
+        window.onload = () => {
+            updateTools();
+        };
+    </script>
+</body>
+
+</html>

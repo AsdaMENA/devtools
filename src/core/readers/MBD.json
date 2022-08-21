@@ -1,0 +1,48 @@
+{
+    "$size": 88,
+    "$type": "MBD",
+    "$table": "MapInfo",
+    "$structure": {
+        "id": {
+            "type": "uint",
+            "description": "Map identifier",
+            "$constraints": {
+                "primaryKey": true
+            }
+        },
+        "name": {
+            "type": "uint",
+            "description": "Map name text id",
+            "$constraints": {}
+        },
+        "key": {
+            "type": "string",
+            "length": 64,
+            "description": "Map key identifier",
+            "$constraints": {
+                "unique": true
+            }
+        },
+        "uk1": {
+            "type": "boolean",
+            "length": 4,
+            "description": "Unknown",
+            "$ignore": true
+        },
+        "battleground": {
+            "type": "boolean",
+            "length": 4,
+            "description": "Unknown"
+        },
+        "maze": {
+            "type": "boolean",
+            "length": 4,
+            "description": "Unknown"
+        },
+        "elite": {
+            "type": "boolean",
+            "length": 4,
+            "description": "Unknown"
+        }
+    }
+}

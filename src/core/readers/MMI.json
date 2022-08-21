@@ -1,0 +1,28 @@
+{
+	"$size": 88,
+	"$structure": {
+		"continent": {
+			"type": "uint"
+		},
+		"uk2": {
+			"type": "int"
+		},
+		"index": {
+			"type": "uint"
+		},
+		"town": {
+			"type": "boolean",
+            "length": 4
+		},
+		"mapId": {
+			"type": "uint"
+		},
+		"hasMinimap": {
+			"type": "int"
+		},
+		"name": {
+			"type": "string",
+			"length": 64
+		}
+	}
+}

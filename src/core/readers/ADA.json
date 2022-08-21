@@ -1,0 +1,31 @@
+{
+    "$size": 92,
+    "$type": "ADA",
+    "$table": "",
+    "$structure": {
+        "id": {
+            "type": "uint"
+        },
+        "regular": {
+            "type": "boolean",
+            "length": 4
+        },
+        "level": {
+            "type": "uint"
+        },
+        "items": {
+            "type": "array",
+            "length": 10,
+            "element": {
+                "type": "uint"
+            }
+        },
+        "chances": {
+            "type": "array",
+            "length": 10,
+            "element": {
+                "type": "uint"
+            }
+        }
+    }
+}

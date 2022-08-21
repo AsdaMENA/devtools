@@ -1,0 +1,6 @@
+{
+    "$size": 300,
+    "$type": "SPE",
+    "$table": "SpecialItemList",
+    "$structure": {}
+}
